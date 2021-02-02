@@ -16,7 +16,7 @@ export const CartReducer = (state, action) => {
             updatedQty = qty + 1;
             return {shoppingCart: [product,...shoppingCart], totalPrice: totalPrice+product.price, message: '', qty: updatedQty};
         }
-        break;
+        // break;
         case 'DELETE_PRODUCT':
             const filtered = shoppingCart.filter(cart => cart.id !== action.id);
             product = shoppingCart.find(cart => cart.id === action.id);
@@ -24,7 +24,7 @@ export const CartReducer = (state, action) => {
             updatedPrice = totalPrice - product.price * product.qty;
             updatedQty = qty - product.qty;
             return {shoppingCart: [...filtered], totalPrice: updatedPrice, message: '', qty: updatedQty}
-            break;
+            // break;
         
         case 'INC':
             console.log('Inc run');
@@ -36,7 +36,7 @@ export const CartReducer = (state, action) => {
             console.log(product, totalPrice);
             shoppingCart[index] = product;
             return {shoppingCart: [...shoppingCart], totalPrice: totalPrice, message: '', qty: updatedQty}
-            break;
+            // break;
 
         case 'DEC': 
         product = shoppingCart.find(product => product.id === action.id);
@@ -52,11 +52,11 @@ export const CartReducer = (state, action) => {
        } else {
            return {shoppingCart: [...shoppingCart], totalPrice: totalPrice, message: '', qty: qty}
        }
-       break;
+    //    break;
 
        case 'EMPTY':
         return {shoppingCart: [], totalPrice: 0, message: '', qty: 0}
-        break;
+        // break;
     default: 
     return state;
 
